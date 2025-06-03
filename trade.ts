@@ -14,8 +14,10 @@ export async function getProfileData() {
         kc.setAccessToken(accessToken);
         const profile = await kc.getProfile();
         console.log("Profile:", profile);
+        return profile;
     } catch (err) {
         console.error(err);
+        throw err;
     }
 }
 
@@ -32,7 +34,9 @@ export async function placeOrder(tradeSymbol: string, transactionType: "BUY" | "
             product: "CNC"
         });
         console.log("Order placed successfully:", order);
+        return order;
     } catch (err) {
         console.error("Error placing order:", err);
+        throw err;
     }
 }
